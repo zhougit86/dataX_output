@@ -1,0 +1,67 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                 "channel": 3
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "root",
+                        "password": "123",
+                        "column": [
+                            "film_id",
+                            "title",
+							"description"
+                        ],
+                        "splitPk": "film_id",
+                        "connection": [
+                            {
+                                "table": [
+                                    "film"
+                                ],
+                                "jdbcUrl": [
+     "jdbc:mysql://127.0.0.1:3306/sakila"
+                                ]
+                            }
+                        ]
+                    }
+                },
+               "writer": {
+                    "name": "hdfswriter",
+                    "parameter": {
+                        "defaultFS": "hdfs://192.168.13.128:9000",
+                        "fileType": "text",
+                        "path": "/user/hive/warehouse/db_hive_edu.db/text_table",
+                        "fileName": "hdfsText.txt",
+                        "column": [
+                            {
+                                "name": "col1",
+                                "type": "SMALLINT"
+                            },
+                            {
+                                "name": "col2",
+                                "type": "STRING"
+                            },
+                            {
+                                "name": "col3",
+                                "type": "STRING"
+                            }
+                        ],
+                        "writeMode": "append",
+                        "fieldDelimiter": "\t",
+                        "compress":"GZIP"
+                    }
+                }
+            }
+        ]
+    }
+}
+

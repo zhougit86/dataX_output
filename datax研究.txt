@@ -1,0 +1,31 @@
+安装，build和使用DataX:
+
+https://github.com/alibaba/DataX/blob/master/userGuid.md
+
+python /opt/datax/bin/datax.py xx.json
+
+解压之后的内容主要是在/bin当中,/script当中是readme的内容
+
+hduser@master:/opt/datax/job$ python /opt/datax/bin/datax.py job.json
+
+=====================================================
+
+生成Job的Json文件
+python datax.py -r {YOUR_READER} -w {YOUR_WRITER}
+EG: python /opt/datax/bin/datax.py -r streamreader -w streamwriter
+
+https://github.com/alibaba/DataX
+READER和WRITER就是代码仓库当中的那些reader和writer
+
+python /opt/datax/bin/datax.py stream2stream.json
+会打印出50次   hello，你好，世界-DataX
+
+
+=======================================================
+https://github.com/alibaba/DataX/blob/master/mysqlreader/doc/mysqlreader.md
+
+这个例子将Mysql当中的元素取出，并且在stream上输出出来
+
+
+
+
