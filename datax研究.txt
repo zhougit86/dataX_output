@@ -137,3 +137,5 @@ adjustChannelNumber： 当中一次对于byte,record进行限制，如果都没�
 
 
 
+
+

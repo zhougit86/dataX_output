@@ -1,0 +1,517 @@
+[{
+	"internal": {
+		"common": {
+			"column": {
+				"dateFormat": "yyyy-MM-dd",
+				"datetimeFormat": "yyyy-MM-dd HH:mm:ss",
+				"encoding": "utf-8",
+				"extraFormats": ["yyyyMMdd"],
+				"timeFormat": "HH:mm:ss",
+				"timeZone": "GMT+8"
+			}
+		},
+		"core": {
+			"container": {
+				"job": {
+					"id": 0,
+					"mode": "standalone",
+					"reportInterval": 10000
+				},
+				"taskGroup": {
+					"channel": 3,
+					"id": 0
+				},
+				"trace": {
+					"enable": "false"
+				}
+			},
+			"dataXServer": {
+				"address": "http://localhost:7001/api",
+				"reportDataxLog": false,
+				"reportPerfLog": false,
+				"timeout": 10000
+			},
+			"statistics": {
+				"collector": {
+					"plugin": {
+						"maxDirtyNumber": 10,
+						"taskClass": "com.alibaba.datax.core.statistics.plugin.task.StdoutPluginCollector"
+					}
+				}
+			},
+			"transport": {
+				"channel": {
+					"byteCapacity": 67108864,
+					"capacity": 512,
+					"class": "com.alibaba.datax.core.transport.channel.memory.MemoryChannel",
+					"flowControlInterval": 20,
+					"speed": {
+						"byte": -1,
+						"record": -1
+					}
+				},
+				"exchanger": {
+					"bufferSize": 32,
+					"class": "com.alibaba.datax.core.plugin.BufferedRecordExchanger"
+				}
+			}
+		},
+		"entry": {
+			"jvm": "-Xms1G -Xmx1G"
+		},
+		"job": {
+			"content": [{
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (1 <= film_id AND film_id < 68) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 0,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (68 <= film_id AND film_id < 135) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 1,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (135 <= film_id AND film_id < 202) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 2,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (202 <= film_id AND film_id < 269) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 3,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (269 <= film_id AND film_id < 336) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 4,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (336 <= film_id AND film_id < 403) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 5,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (403 <= film_id AND film_id < 470) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 6,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (470 <= film_id AND film_id < 537) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 7,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (537 <= film_id AND film_id < 604) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 8,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (604 <= film_id AND film_id < 670) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 9,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (670 <= film_id AND film_id < 736) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 10,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (736 <= film_id AND film_id < 802) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 11,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (802 <= film_id AND film_id < 868) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 12,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (868 <= film_id AND film_id < 934) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 13,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  (934 <= film_id AND film_id <= 1000) ",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 14,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}, {
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"column": "film_id,title,description",
+						"columnList": ["film_id", "title", "description"],
+						"fetchSize": -2147483648,
+						"isTableMode": true,
+						"jdbcUrl": "jdbc:mysql://127.0.0.1:3306/sakila?yearIsDateType=false&zeroDateTimeBehavior=convertToNull&tinyInt1isBit=false&rewriteBatchedStatements=true",
+						"loadBalanceResourceMark": "127.0.0.1",
+						"password": "123",
+						"pkType": "pkTypeLong",
+						"querySql": "select film_id,title,description from film  where  film_id IS NULL",
+						"splitPk": "film_id",
+						"table": "film",
+						"tableNumber": 1,
+						"username": "root"
+					}
+				},
+				"taskId": 15,
+				"writer": {
+					"name": "streamwriter",
+					"parameter": {
+						"print": true
+					}
+				}
+			}],
+			"setting": {
+				"errorLimit": {
+					"percentage": 0.02,
+					"record": 0
+				},
+				"speed": {
+					"channel": 3
+				}
+			}
+		},
+		"plugin": {
+			"reader": {
+				"mysqlreader": {
+					"class": "com.alibaba.datax.plugin.reader.mysqlreader.MysqlReader",
+					"description": "useScene: prod. mechanism: Jdbc connection using the database, execute select sql, retrieve data from the ResultSet. warn: The more you know about the database, the less problems you encounter.",
+					"developer": "alibaba",
+					"name": "mysqlreader",
+					"path": "/opt/datax/plugin/reader/mysqlreader"
+				}
+			},
+			"writer": {
+				"streamwriter": {
+					"class": "com.alibaba.datax.plugin.writer.streamwriter.StreamWriter",
+					"description": {
+						"mechanism": "use datax framework to transport data to stream.",
+						"useScene": "only for developer test.",
+						"warn": "Never use it in your real job."
+					},
+					"developer": "alibaba",
+					"name": "streamwriter",
+					"path": "/opt/datax/plugin/writer/streamwriter"
+				}
+			}
+		}
+	},
+	"keys": ["job.content[7].reader.parameter.fetchSize", "job.content[10].reader.parameter.username", "job.content[2].reader.parameter.columnList[2]", "job.content[6].reader.parameter.isTableMode", "job.content[7].reader.parameter.tableNumber", "job.content[9].reader.parameter.isTableMode", "job.content[2].reader.parameter.fetchSize", "job.content[9].reader.parameter.querySql", "job.content[6].reader.parameter.pkType", "job.content[12].reader.parameter.table", "job.content[0].reader.parameter.isTableMode", "job.content[14].writer.name", "job.content[4].reader.parameter.columnList[0]", "core.transport.channel.class", "job.content[1].writer.parameter.print", "job.content[3].reader.name", "core.container.taskGroup.channel", "job.content[3].reader.parameter.isTableMode", "job.content[2].writer.name", "job.content[3].reader.parameter.columnList[1]", "job.content[11].reader.parameter.password", "job.content[15].reader.parameter.column", "job.content[5].reader.parameter.column", "job.content[10].reader.parameter.isTableMode", "job.content[14].reader.parameter.splitPk", "job.content[3].reader.parameter.pkType", "job.content[13].reader.parameter.isTableMode", "job.content[2].reader.parameter.columnList[1]", "job.content[4].reader.parameter.table", "job.content[11].reader.parameter.tableNumber", "job.content[12].reader.parameter.querySql", "job.content[14].reader.parameter.tableNumber", "job.content[13].reader.parameter.pkType", "job.content[4].reader.parameter.password", "job.content[5].reader.parameter.querySql", "plugin.writer.streamwriter.description.warn", "job.content[12].reader.parameter.jdbcUrl", "job.content[0].reader.parameter.jdbcUrl", "job.content[2].reader.parameter.splitPk", "job.content[8].reader.parameter.column", "job.content[7].reader.parameter.username", "job.content[14].reader.parameter.username", "job.content[10].taskId", "core.dataXServer.timeout", "job.content[3].reader.parameter.columnList[2]", "job.content[13].reader.parameter.loadBalanceResourceMark", "job.content[9].reader.parameter.table", "core.transport.channel.speed.byte", "job.content[2].reader.parameter.columnList[0]", "job.content[0].reader.parameter.column", "job.content[14].writer.parameter.print", "plugin.writer.streamwriter.path", "job.content[15].taskId", "job.content[9].reader.parameter.splitPk", "job.content[9].reader.parameter.pkType", "job.content[4].taskId", "plugin.reader.mysqlreader.name", "job.content[3].writer.name", "job.content[10].reader.parameter.fetchSize", "core.transport.channel.byteCapacity", "job.content[4].reader.parameter.columnList[2]", "job.content[2].reader.parameter.table", "job.content[2].reader.parameter.column", "job.content[2].reader.parameter.querySql", "job.content[13].reader.parameter.username", "job.content[7].reader.parameter.table", "job.content[6].writer.parameter.print", "job.content[1].writer.name", "core.transport.channel.speed.record", "job.content[6].reader.parameter.querySql", "job.content[8].reader.parameter.password", "job.content[9].reader.parameter.fetchSize", "job.content[10].reader.parameter.pkType", "job.content[1].reader.parameter.querySql", "job.content[10].reader.parameter.splitPk", "core.statistics.collector.plugin.taskClass", "job.content[9].reader.name", "job.content[15].reader.name", "job.content[3].reader.parameter.username", "plugin.reader.mysqlreader.description", "job.content[6].reader.parameter.splitPk", "job.content[4].reader.parameter.columnList[1]", "job.content[13].reader.name", "common.column.timeZone", "job.content[15].reader.parameter.fetchSize", "entry.jvm", "job.content[4].reader.parameter.tableNumber", "job.content[11].reader.parameter.splitPk", "plugin.reader.mysqlreader.developer", "job.content[3].reader.parameter.columnList[0]", "job.content[7].taskId", "job.content[15].reader.parameter.tableNumber", "job.content[3].reader.parameter.jdbcUrl", "job.content[4].writer.parameter.print", "job.content[10].reader.parameter.columnList[0]", "job.content[6].reader.parameter.columnList[1]", "job.content[15].reader.parameter.querySql", "job.content[6].reader.parameter.table", "job.content[5].reader.parameter.columnList[2]", "core.container.job.id", "job.content[7].reader.parameter.columnList[0]", "job.content[0].writer.name", "core.statistics.collector.plugin.maxDirtyNumber", "common.column.extraFormats[0]", "job.content[4].writer.name", "core.container.trace.enable", "job.content[12].reader.parameter.tableNumber", "job.content[15].reader.parameter.jdbcUrl", "job.content[14].reader.parameter.column", "core.transport.exchanger.class", "job.content[6].reader.parameter.column", "job.content[11].reader.parameter.fetchSize", "core.transport.channel.capacity", "job.content[6].reader.parameter.columnList[2]", "job.content[2].reader.parameter.username", "core.container.taskGroup.id", "job.content[1].reader.parameter.jdbcUrl", "job.content[0].reader.parameter.tableNumber", "job.content[1].reader.parameter.pkType", "job.content[9].writer.parameter.print", "job.content[1].reader.parameter.table", "job.content[8].writer.name", "core.dataXServer.reportDataxLog", "job.content[5].reader.parameter.columnList[1]", "job.content[13].writer.name", "job.content[10].reader.parameter.password", "job.content[5].reader.parameter.pkType", "job.content[8].reader.parameter.jdbcUrl", "job.content[9].reader.parameter.tableNumber", "job.content[9].reader.parameter.password", "job.content[15].reader.parameter.splitPk", "core.transport.exchanger.bufferSize", "job.content[8].reader.parameter.columnList[0]", "job.content[8].taskId", "job.content[7].reader.parameter.isTableMode", "plugin.reader.mysqlreader.class", "job.content[11].reader.parameter.username", "job.content[13].reader.parameter.jdbcUrl", "job.content[10].reader.parameter.columnList[2]", "job.content[1].reader.parameter.password", "job.content[7].reader.parameter.jdbcUrl", "job.content[2].taskId", "job.content[13].taskId", "job.content[10].reader.parameter.jdbcUrl", "job.content[3].reader.parameter.querySql", "job.content[10].reader.parameter.tableNumber", "job.content[5].reader.parameter.columnList[0]", "job.content[3].reader.parameter.loadBalanceResourceMark", "job.content[4].reader.parameter.loadBalanceResourceMark", "job.content[2].reader.parameter.loadBalanceResourceMark", "job.content[5].reader.parameter.loadBalanceResourceMark", "job.content[6].reader.parameter.jdbcUrl", "job.content[6].reader.parameter.loadBalanceResourceMark", "job.content[9].reader.parameter.loadBalanceResourceMark", "common.column.timeFormat", "job.content[6].reader.name", "job.content[15].reader.parameter.isTableMode", "job.content[0].reader.parameter.username", "job.content[2].reader.parameter.tableNumber", "job.content[2].reader.name", "job.content[13].reader.parameter.fetchSize", "job.content[1].reader.parameter.fetchSize", "job.content[8].reader.parameter.columnList[1]", "job.content[11].reader.parameter.jdbcUrl", "job.content[7].reader.parameter.columnList[2]", "job.setting.speed.channel", "job.content[7].reader.parameter.loadBalanceResourceMark", "job.content[8].reader.parameter.loadBalanceResourceMark", "job.content[10].reader.parameter.columnList[1]", "job.content[12].writer.parameter.print", "job.content[1].reader.parameter.username", "job.content[5].reader.parameter.isTableMode", "job.content[0].reader.parameter.fetchSize", "job.content[6].reader.parameter.columnList[0]", "job.content[12].reader.parameter.fetchSize", "job.content[1].reader.parameter.loadBalanceResourceMark", "job.content[5].reader.parameter.jdbcUrl", "job.content[0].reader.parameter.loadBalanceResourceMark", "job.content[4].reader.parameter.jdbcUrl", "job.content[12].reader.parameter.column", "job.content[5].taskId", "job.content[7].reader.parameter.columnList[1]", "job.content[0].reader.parameter.password", "job.content[14].reader.parameter.table", "core.container.job.mode", "job.content[13].reader.parameter.querySql", "job.content[12].reader.name", "job.content[4].reader.parameter.querySql", "job.content[8].reader.parameter.columnList[2]", "job.content[10].reader.parameter.column", "job.content[9].reader.parameter.columnList[1]", "job.content[13].reader.parameter.columnList[0]", "job.content[14].taskId", "job.content[6].reader.parameter.password", "job.content[10].writer.parameter.print", "job.setting.errorLimit.record", "job.content[1].reader.parameter.column", "job.content[3].reader.parameter.table", "job.content[15].reader.parameter.loadBalanceResourceMark", "job.content[3].taskId", "job.content[14].reader.parameter.fetchSize", "job.content[14].reader.parameter.jdbcUrl", "job.content[7].writer.parameter.print", "job.content[5].reader.parameter.username", "job.content[2].reader.parameter.jdbcUrl", "job.content[7].reader.parameter.querySql", "job.content[15].writer.parameter.print", "job.content[7].reader.name", "job.content[14].reader.parameter.querySql", "plugin.writer.streamwriter.class", "job.content[11].reader.parameter.columnList[2]", "common.column.datetimeFormat", "job.content[12].reader.parameter.columnList[1]", "job.content[4].reader.parameter.splitPk", "job.content[2].writer.parameter.print", "job.content[2].reader.parameter.pkType", "job.content[9].reader.parameter.columnList[2]", "job.content[9].reader.parameter.jdbcUrl", "job.content[14].reader.parameter.columnList[0]", "job.content[4].reader.parameter.column", "job.content[7].writer.name", "job.content[6].writer.name", "job.content[14].reader.parameter.pkType", "job.content[6].taskId", "job.content[11].writer.name", "job.content[0].reader.parameter.querySql", "job.content[12].reader.parameter.columnList[2]", "job.content[10].writer.name", "job.content[11].reader.parameter.loadBalanceResourceMark", "job.content[11].reader.parameter.columnList[1]", "core.dataXServer.address", "job.content[13].reader.parameter.password", "job.content[0].writer.parameter.print", "job.content[10].reader.parameter.querySql", "job.content[13].reader.parameter.columnList[2]", "job.content[0].taskId", "job.content[1].reader.parameter.isTableMode", "job.content[7].reader.parameter.pkType", "job.content[8].reader.parameter.username", "job.content[9].reader.parameter.username", "job.content[14].reader.parameter.columnList[1]", "job.content[2].reader.parameter.password", "job.content[12].reader.parameter.splitPk", "common.column.encoding", "job.content[8].reader.parameter.fetchSize", "job.content[5].writer.name", "job.content[5].reader.parameter.tableNumber", "job.content[8].reader.parameter.isTableMode", "job.content[12].reader.parameter.isTableMode", "job.content[11].reader.parameter.columnList[0]", "job.content[8].reader.parameter.splitPk", "job.content[11].reader.parameter.querySql", "job.content[3].reader.parameter.password", "job.content[12].reader.parameter.pkType", "job.content[13].reader.parameter.splitPk", "job.content[11].reader.parameter.table", "job.content[9].reader.parameter.columnList[0]", "job.content[13].reader.parameter.columnList[1]", "job.content[11].reader.parameter.pkType", "job.content[7].reader.parameter.splitPk", "job.content[12].reader.parameter.username", "job.content[14].reader.parameter.columnList[2]", "job.content[8].reader.parameter.table", "job.content[5].writer.parameter.print", "job.content[2].reader.parameter.isTableMode", "job.content[13].reader.parameter.tableNumber", "plugin.writer.streamwriter.description.useScene", "job.content[11].reader.name", "job.content[3].reader.parameter.fetchSize", "job.content[11].reader.parameter.isTableMode", "job.content[11].taskId", "job.content[12].reader.parameter.columnList[0]", "core.container.job.reportInterval", "job.content[1].taskId", "job.content[8].reader.parameter.pkType", "common.column.dateFormat", "job.content[5].reader.parameter.splitPk", "job.content[8].reader.parameter.querySql", "job.content[4].reader.parameter.username", "job.content[14].reader.parameter.loadBalanceResourceMark", "job.content[12].reader.parameter.password", "job.content[3].reader.parameter.column", "job.content[15].reader.parameter.columnList[1]", "job.content[7].reader.parameter.password", "job.content[0].reader.parameter.columnList[1]", "job.content[5].reader.name", "job.content[5].reader.parameter.fetchSize", "plugin.writer.streamwriter.developer", "job.content[1].reader.name", "job.content[15].reader.parameter.table", "job.content[6].reader.parameter.tableNumber", "job.content[0].reader.name", "job.content[4].reader.parameter.fetchSize", "job.content[3].reader.parameter.splitPk", "job.content[10].reader.parameter.table", "job.content[1].reader.parameter.columnList[0]", "job.content[3].reader.parameter.tableNumber", "job.content[12].writer.name", "job.content[15].reader.parameter.columnList[2]", "job.content[4].reader.parameter.isTableMode", "job.content[0].reader.parameter.columnList[2]", "job.content[13].writer.parameter.print", "job.content[9].writer.name", "job.content[12].taskId", "job.content[4].reader.parameter.pkType", "job.content[15].reader.parameter.pkType", "core.dataXServer.reportPerfLog", "job.content[7].reader.parameter.column", "job.content[12].reader.parameter.loadBalanceResourceMark", "job.content[10].reader.parameter.loadBalanceResourceMark", "core.transport.channel.flowControlInterval", "job.content[1].reader.parameter.splitPk", "job.content[15].reader.parameter.username", "plugin.writer.streamwriter.description.mechanism", "job.content[13].reader.parameter.table", "plugin.reader.mysqlreader.path", "job.content[1].reader.parameter.columnList[1]", "job.content[6].reader.parameter.fetchSize", "job.content[0].reader.parameter.pkType", "job.content[8].reader.name", "job.content[9].reader.parameter.column", "job.content[15].writer.name", "job.content[11].writer.parameter.print", "job.content[0].reader.parameter.splitPk", "job.content[8].reader.parameter.tableNumber", "job.content[4].reader.name", "job.content[15].reader.parameter.password", "job.content[9].taskId", "job.content[6].reader.parameter.username", "plugin.writer.streamwriter.name", "job.content[13].reader.parameter.column", "job.content[14].reader.name", "job.content[1].reader.parameter.columnList[2]", "job.content[14].reader.parameter.password", "job.content[1].reader.parameter.tableNumber", "job.content[3].writer.parameter.print", "job.content[11].reader.parameter.column", "job.content[0].reader.parameter.columnList[0]", "job.content[5].reader.parameter.table", "job.content[15].reader.parameter.columnList[0]", "job.content[0].reader.parameter.table", "job.content[5].reader.parameter.password", "job.content[8].writer.parameter.print", "job.setting.errorLimit.percentage", "job.content[10].reader.name", "job.content[14].reader.parameter.isTableMode"],
+	"secretKeyPathSet": []
+}]
