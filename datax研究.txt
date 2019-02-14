@@ -129,6 +129,18 @@ split:
 adjustChannelNumber： 当中一次对于byte,record进行限制，如果都没有设置，至少要针对Channel的速度进行限制，
 拿当前的例子，就是返回了一个channel的number，用于后续计算reader数量的时候算出来一个adviceNumber
 
+transformer在从mysql读Stream写的例子当中也不存在
+
+reader task 和 writer task的数量永远是相等。
+------------------------------------------------
+schedule:
+List<Configuration> taskGroupConfigs = JobAssignUtil.assignFairly(this.configuration,
+                this.needChannelNumber, channelsPerTaskGroup);
+是将task分配到不同的task group当中去
+
+
+
+
 
 
 

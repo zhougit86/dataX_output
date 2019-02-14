@@ -248,4 +248,27 @@ List<Configuration> taskGroupConfigs = JobAssignUtil.assignFairly(this.configura
 是将task分配到不同的task group当中去
 
 task configure的json比较长，参考
-https://github.com/zhougit86/dataX_output/blob/master/taskGroupConfiguration.txt
+https://github.com/zhougit86/dataX_output/blob/master/taskGroupConfiguration.json
+
+在schedule函数当中有一句
+```java
+scheduler.schedule(taskGroupConfigs);
+```
+
+是将上述task config作为入参传到schedule当中
+
+在ProcessInnerScheduler当中有startAllTaskGroup这个方法，这里是完成所有数据转换的核心
+```java
+    @Override
+    public void startAllTaskGroup(List<Configuration> configurations) {
+        this.taskGroupContainerExecutorService = Executors
+                .newFixedThreadPool(configurations.size());
+
+        for (Configuration taskGroupConfiguration : configurations) {
+            TaskGroupContainerRunner taskGroupContainerRunner = newTaskGroupContainerRunner(taskGroupConfiguration);
+            this.taskGroupContainerExecutorService.execute(taskGroupContainerRunner);
+        }
+
+        this.taskGroupContainerExecutorService.shutdown();
+    }
+```
