@@ -233,7 +233,6 @@ classLoaderSwapper.restoreCurrentThreadClassLoader();
 ### prepare:
 进行prepare阶段，貌似mysql和stream的prepare都为空
 
-
 ### split:
 adjustChannelNumber： 当中一次对于byte,record进行限制，如果都没有设置，至少要针对Channel的速度进行限制，
 拿当前的例子，就是返回了一个channel的number，用于后续计算reader数量的时候算出来一个adviceNumber
@@ -272,3 +271,23 @@ scheduler.schedule(taskGroupConfigs);
         this.taskGroupContainerExecutorService.shutdown();
     }
 ```
+
+代码可读性很好，看起来应该是根据taskGroup的数量创建了一个固定数量的线程池。
+下一步应该要跟踪到TaskGroupContainerRunner当中的run函数
+```java
+@Override
+	public void run() {
+		try {
+            Thread.currentThread().setName(
+                    String.format("taskGroup-%d", this.taskGroupContainer.getTaskGroupId()));
+            this.taskGroupContainer.start();
+			this.state = State.SUCCEEDED;
+		} catch (Throwable e) {
+			this.state = State.FAILED;
+			throw DataXException.asDataXException(
+					FrameworkErrorCode.RUNTIME_ERROR, e);
+		}
+	}
+```
+
+这里可以看到将线程名改为了taskGroup-X的形式，在新的线程当中运行了taskGroupContainer这个方法
