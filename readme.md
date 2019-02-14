@@ -157,7 +157,7 @@ STORED AS TEXTFILE;
 mvn clean package -DskipTests assembly:assembly
 ```
 
-### 代码走读
+### standalone模式代码走读
 
 在dataX.py当中查找startCommand，将其取消注释，可以看到究竟是怎样启动DataX的
 ```shell
